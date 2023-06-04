@@ -1,0 +1,14 @@
+#!/bin/bash
+
+yourhome=$(whiptail --inputbox "Enter your new home dir\n ex:/home/new" 8 39 --title "User Modify" 3>&1 1>&2 2>&3)
+
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+sudo usermod -d "$yourhome" $username
+whiptail --title "DONE" --msgbox "Your new home dir is $yourhome" 8 78
+ ./mainsc
+else
+    ./mainsc
+fi
+
+

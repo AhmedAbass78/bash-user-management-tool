@@ -1,0 +1,10 @@
+#!/bin/bash
+
+listusers=$(sudo cat /etc/passwd | cut -d ":" -f 1,3)
+
+whiptail --scrolltext --title "Users on your system" --msgbox "$listusers" 20 78
+
+if [ $? -eq 0 ]
+then
+./mainsc
+fi 

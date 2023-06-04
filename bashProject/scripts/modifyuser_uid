@@ -1,0 +1,25 @@
+#!/bin/bash
+
+uid=$(whiptail --inputbox "Enter UID" 8 39 --title "Modify User" 3>&1 1>&2 2>&3)
+
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+
+###Check existence of uid###
+sudo getent passwd $username | grep $uid &> /dev/null
+if [ $? -eq 0 ] 
+then
+whiptail --title "OOPS" --msgbox "UID is already existed :(" 8 78
+./mainsc
+else
+sudo usermod -u $uid $username &> /dev/null
+whiptail --title "DONE" --msgbox "UID $uid is set to user $username" 8 78
+./mainsc
+fi
+
+else
+    ./mainsc
+fi
+
+
+

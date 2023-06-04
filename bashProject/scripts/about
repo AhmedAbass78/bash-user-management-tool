@@ -1,0 +1,4 @@
+#!/bin/bash
+
+whiptail --title "About" --msgbox "Welcome To User Management Tool.. :)\n\nThis tool helps you to manage users on system.\nCreated by Eng: Ahmed Mohammed Abass\nSupervised by Eng: Romany Nageh" 15 78
+./mainsc

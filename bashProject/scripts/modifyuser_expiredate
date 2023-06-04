@@ -1,0 +1,15 @@
+#!/bin/bash
+
+yourdate=$(whiptail --inputbox "Enter expiration date of user\n ex: 2030-04-23" 8 39 --title "User Modify" 3>&1 1>&2 2>&3)
+
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+sudo usermod -e "$yourdate" $username
+whiptail --title "DONE" --msgbox "Expiration date of user $username is $yourdate" 8 78
+ ./mainsc
+else
+    ./mainsc
+fi
+
+
+

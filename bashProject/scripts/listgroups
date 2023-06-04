@@ -1,0 +1,13 @@
+#!/bin/bash
+
+listgroups=$(sudo cat /etc/group | cut -d ":" -f 1,3)
+
+whiptail --scrolltext --title "Groups on your system" --msgbox "$listgroups" 20 78
+
+if [ $? -eq 0 ]
+then
+./mainsc
+fi 
+
+
+

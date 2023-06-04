@@ -1,0 +1,33 @@
+#!/bin/bash
+
+primarygroup=$(whiptail --inputbox "Enter group name" 8 39 --title "User Modify" 3>&1 1>&2 2>&3)
+
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+
+###Check if input is empty###
+        if [ -z "$primarygroup" ]
+        then
+            	whiptail --title "OOPS" --msgbox "Invalid Input :(" 8 78
+                ./mainsc
+        fi
+
+###Check Group Existense###
+
+	sudo getent group $primarygroup &> /dev/null
+	if [ $? = 0 ]; then
+	sudo usermod -g "$primarygroup" $username &> /dev/null 
+	whiptail --title "DONE" --msgbox "Group $primarygroup is set as primary group to user $username" 8 78
+	 ./mainsc
+	else
+	whiptail --title "DONE" --msgbox "Group $primarygroup is not existed" 8 78
+	./mainsc
+	fi
+
+else
+    ./mainsc
+fi
+
+
+
+
