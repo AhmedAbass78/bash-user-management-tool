@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label "sys-admin-mnf"}
 
     stages {
         stage('Build') {
